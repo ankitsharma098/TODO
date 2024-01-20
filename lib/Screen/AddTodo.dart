@@ -36,54 +36,56 @@ class _AddTodoState extends State<AddTodo> {
   @override
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
 
-    extendBodyBehindAppBar: true,
-    appBar: AppBar(
-      title: Text(isEdit ?'Edit a Task':"Add a Task"),
-      centerTitle: true,
-      backgroundColor: Colors.transparent,
-    ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/MainBackground.jpg'),
-              fit: BoxFit.cover
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text(isEdit ?'Edit a Task':"Add a Task"),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+      ),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/MainBackground.jpg'),
+                fit: BoxFit.cover
+            ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: size.height*0.1,),
-            TextField(
-              controller: titleController,
-              decoration: InputDecoration(
-                hintText: "Title",
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: size.height*0.1,),
+              TextField(
+                controller: titleController,
+                decoration: InputDecoration(
+                  hintText: "Title",
 
+                ),
               ),
-            ),
-            TextField(
-              controller: descriptionController,
-              decoration: InputDecoration(
-                hintText: "Description",
-                hoverColor: Colors.green,
+              TextField(
+                controller: descriptionController,
+                decoration: InputDecoration(
+                  hintText: "Description",
+                  hoverColor: Colors.green,
 
 
+                ),
+                keyboardType: TextInputType.multiline,
+                minLines: 5,
+                maxLines: 8,
               ),
-              keyboardType: TextInputType.multiline,
-              minLines: 5,
-              maxLines: 8,
-            ),
-            SizedBox(height: size.height*0.02,),
-            TextButton(
+              SizedBox(height: size.height*0.02,),
+              TextButton(
 
-                style: TextButton.styleFrom(backgroundColor: Colors.lime,),
-                onPressed: isEdit?updateData:submitData,
-                child: Container(
-                    width: size.width*0.5,
-                    height: size.height*0.03,
-                    child: Text(isEdit? "Update":"Submit",textAlign:TextAlign.center,)))
-          ],
+                  style: TextButton.styleFrom(backgroundColor: Colors.lime,),
+                  onPressed: isEdit?updateData:submitData,
+                  child: Container(
+                      width: size.width*0.5,
+                      height: size.height*0.03,
+                      child: Text(isEdit? "Update":"Submit",textAlign:TextAlign.center,)))
+            ],
+          ),
         ),
       ),
     );
